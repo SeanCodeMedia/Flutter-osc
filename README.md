@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # flutterosc
 
 A new flutter plugin project.
@@ -13,3 +14,7 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+=======
+# Flutter-osc
+This is a Flutter plugin for Android that allows the user to send open sound control (OSC) messages via flutter.
+>>>>>>> 1dc129e2e22074b45d524bbff7eb85354612c6b3
