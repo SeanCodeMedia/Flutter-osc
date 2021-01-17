@@ -1,8 +1,12 @@
-name: flutterosc
-description: A new flutter plugin project.
+name: flutter-osc
+description: >-
+  Flutter OSC allows flutter developers to send Open Sound Control (OSC) messages from android.
+  This plugin is depended on Java OSC com.illposed.osc to send osc messages. Hence, this package does
+  not work on IOS. I am planning on added IOS support in the near future.
 version: 0.0.1
-author:
-homepage:
+author: Sean Peart
+homepage: https://github.com/SeanCodeMedia/Flutter-osc
+repository: https://github.com/SeanCodeMedia/Flutter-osc
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

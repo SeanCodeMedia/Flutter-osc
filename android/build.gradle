@@ -35,4 +35,5 @@ android {
 
 dependencies {
     implementation files('libs/javaosc-core-0.3.jar')
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
