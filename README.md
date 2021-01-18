@@ -58,7 +58,7 @@ https://www.illposed.com/software/javaoscdoc/
 # Example OSC Listener 
  
  FlutterOSCListener(listeningPort, "address pattern")
-  when the address pattern parameter is set to "" the listener will listen for all incoming OSC addresses on the port you are listening on. However, if the address pattern parameter is to an address, the  OSC listener will only listen for that particular address. 
+  when the address pattern parameter is set to "" the listener will listen for all incoming OSC addresses on the port you are listening on. However, if the address pattern parameter is set to an osc address, the  OSC listener will only listen for that particular address. 
 
   ```dart 
 
