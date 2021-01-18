@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterosc/flutterOSCBundle.dart';
+import 'package:flutterosc/FlutterOSCBundleString.dart';
+import 'package:flutterosc/FlutterOSCBundleInteger.dart';
+import 'package:flutterosc/FlutterOSCBundleFloat.dart';
+import 'package:flutterosc/FlutterOSCBundleBoolean.dart';
 import 'package:flutterosc/flutterOSCListener.dart';
 import 'package:flutterosc/flutterOSCSender.dart';
 void main() {
@@ -14,26 +17,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
 
-  FlutterOSCSender sender = new FlutterOSCSender("192.168.0.101",  9076);
-
-
-  FlutterOSCBundle bundle3 = new FlutterOSCBundle("192.168.0.101", 9076, false);
-  FlutterOSCBundle bundle2 = new FlutterOSCBundle("192.168.0.101", 9076, false);
-  FlutterOSCBundle bundle = new FlutterOSCBundle("192.168.0.101", 9076, false);
-  FlutterOSCListener listener = new FlutterOSCListener(9003, "");
+  FlutterOSCSender sender = new FlutterOSCSender("192.168.0.103",  9076);
+  FlutterOSCBundleString bundle3 = new FlutterOSCBundleString("192.168.0.103", 9076, false);
+  FlutterOSCBundleInt bundle2 = new    FlutterOSCBundleInt("192.168.0.103", 9076, false);
+  FlutterOSCBundleFloat bundle = new   FlutterOSCBundleFloat("192.168.0.103", 9076, false);
+  FlutterOSCBundleBool bundle4 = new   FlutterOSCBundleBool("192.168.0.103", 9076, false);
+  FlutterOSCListener listener = new    FlutterOSCListener(9003, "");
 
   @override
   void initState() {
     super.initState();
-     bundle.addOSCMessageToBundle("/igloo1", ["1","2","3"]);
-     bundle.addOSCMessageToBundle("/igloo2", ["1","2","3"]);
-     bundle.addOSCMessageToBundle("/igloo3", ["1","2","3"]);
-     bundle.addOSCMessageToBundle("/igloo4", ["1","2","3","4"]);
+     bundle.addOSCMessageToBundle("/igloo1", [1.2, 14.4, 12.2]);
+     bundle.addOSCMessageToBundle("/igloo2", [1.2, 14.4, 12.2]);
+     bundle.addOSCMessageToBundle("/igloo3", [1.2, 14.4, 12.2]);
+     bundle.addOSCMessageToBundle("/igloo4", [1.2, 14.4, 12.2, 1.2, 14.4, 12.2]);
 
-    bundle2.addOSCMessageToBundle("/igloo5", ["1","2","3"]);
-    bundle2.addOSCMessageToBundle("/igloo6", ["1","2","3"]);
-    bundle2.addOSCMessageToBundle("/igloo7", ["1","2","3"]);
-    bundle2.addOSCMessageToBundle("/igloo8", ["1","2","3","4"]);
+    bundle2.addOSCMessageToBundle("/igloo5", [1,2,3]);
+    bundle2.addOSCMessageToBundle("/igloo6", [1,2,3]);
+    bundle2.addOSCMessageToBundle("/igloo7", [1,2,3]);
+    bundle2.addOSCMessageToBundle("/igloo8", [1,2,3,4,1,2,3,4]);
 
     bundle3.addOSCMessageToBundle("/igloo9", ["1","2","3"]);
     bundle3.addOSCMessageToBundle("/igloo10", ["1","2","3"]);
@@ -64,10 +66,10 @@ class _MyAppState extends State<MyApp> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed:(){
-            bundle.sendOSCBundle();
-            bundle2.sendOSCBundle();
-            bundle3.sendOSCBundle();
-            sender.sendOSCInteger("/address", [1, 2]);
+            bundle.sendOSCBundleFloat();
+            bundle2.sendOSCBundleInt();
+            bundle3.sendOSCBundleString();
+            sender.sendOSCInt("/address", [1, 2]);
             sender.sendOSCString("/address", ["1s", "2s"]);
             sender.sendOSCString("/address", ["3s", "5s"]);
             sender.sendOSCFloat("/address1", [1.000, 1234.4]);

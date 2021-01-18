@@ -9,7 +9,7 @@ class FlutterOSCSender {
   String _ip;
   int  _port;
   String _response = "";
-  int delay = 0;
+  int _delay = 0;
 
   FlutterOSCSender(String ip, int port){
     this._ip = ip;
@@ -32,7 +32,7 @@ class FlutterOSCSender {
     }
   }
 
-  Future<void> sendOSCInteger(String address, List<int> arguments) async {
+  Future<void> sendOSCInt(String address, List<int> arguments) async {
     try {
       final String result = await platform.invokeMethod('sendOSCMessageInteger',<String, dynamic>{
         "IP":this._ip,

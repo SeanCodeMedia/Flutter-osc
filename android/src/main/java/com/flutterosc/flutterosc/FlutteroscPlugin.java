@@ -4,9 +4,6 @@ import android.util.Log;
 
 import java.net.SocketException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 
@@ -106,7 +103,7 @@ public class FlutteroscPlugin implements FlutterPlugin, MethodCallHandler {
               (ArrayList<Boolean>) call.argument("message"));
 
     }
-     else if(call.method.equals("bundleSender")){
+     else if(call.method.equals("bundleSenderString")){
 
       result.success("working2");
       Log.d(TAG, call.argument("bundle").getClass().toString());
@@ -115,12 +112,49 @@ public class FlutteroscPlugin implements FlutterPlugin, MethodCallHandler {
 
       Log.d(TAG,call.argument("bundle").toString());
 
-       bundleSender.bundleSender((String) call.argument("IP"),
+       bundleSender.bundleSenderString((String) call.argument("IP"),
                                 ((Integer) call.argument("port")),
                                 ((String) call.argument("bundle")));
 
 
-    }  else if(call.method.equals("setIncomingPort")){
+    }else if(call.method.equals("bundleSenderInt")){
+
+      result.success("working2");
+      Log.d(TAG, call.argument("bundle").getClass().toString());
+      Log.d(TAG, call.argument("IP").getClass().toString());
+      Log.d(TAG, call.argument("port").getClass().toString());
+
+      Log.d(TAG,call.argument("bundle").toString());
+
+      bundleSender.bundleSenderInt((String) call.argument("IP"),
+              ((Integer) call.argument("port")),
+              ((String) call.argument("bundle")));
+    }else if(call.method.equals("bundleSenderFloat")){
+
+      result.success("working2");
+      Log.d(TAG, call.argument("bundle").getClass().toString());
+      Log.d(TAG, call.argument("IP").getClass().toString());
+      Log.d(TAG, call.argument("port").getClass().toString());
+
+      Log.d(TAG,call.argument("bundle").toString());
+
+      bundleSender.bundleSenderFloat((String) call.argument("IP"),
+              ((Integer) call.argument("port")),
+              ((String) call.argument("bundle")));
+    }else if(call.method.equals("bundleSenderBool")){
+
+      result.success("working2");
+      Log.d(TAG, call.argument("bundle").getClass().toString());
+      Log.d(TAG, call.argument("IP").getClass().toString());
+      Log.d(TAG, call.argument("port").getClass().toString());
+
+      Log.d(TAG,call.argument("bundle").toString());
+
+      bundleSender.bundleSenderBool((String) call.argument("IP"),
+              ((Integer) call.argument("port")),
+              ((String) call.argument("bundle")));
+    }
+     else if(call.method.equals("setIncomingPort")){
       result.success("working3");
 
       Log.d(TAG, call.argument("incomingPort").getClass().toString());

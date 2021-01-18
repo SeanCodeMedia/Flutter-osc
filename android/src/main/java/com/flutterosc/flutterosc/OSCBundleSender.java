@@ -27,7 +27,7 @@ public class OSCBundleSender implements OSCThread {
         OSCBundle OSCBundle;
 
 
-        public void bundleSender( String IPAddress, int outGoingPort,  String bundle){
+        public void bundleSenderString(String IPAddress, int outGoingPort, String bundle){
 
             JSONObject jsonObject;
             this.ip = IPAddress;
@@ -77,6 +77,159 @@ public class OSCBundleSender implements OSCThread {
             }
 
             };
+
+        public void bundleSenderInt(String IPAddress, int outGoingPort, String bundle){
+
+        JSONObject jsonObject;
+        this.ip = IPAddress;
+        this.port = outGoingPort;
+
+        try{
+            jsonObject = new JSONObject(bundle);
+            JSONArray keys = jsonObject.names();
+
+            assert keys != null;
+            for(int y = 0; y < keys.length(); y++){
+                String key = keys.getString(y);
+                OSCMessage message = new OSCMessage(key);
+                String value = jsonObject.getString(key);
+                // help from https://howtodoinjava.com/gson/gson-parse-json-array/
+                Type argArrayType = new TypeToken<ArrayList<String>>(){}.getType();
+                ArrayList<String> argArray = gson.fromJson(value, argArrayType);
+
+                for(int i=0; i <argArray.size(); i++){
+                    message.addArgument(Integer.parseInt(argArray.get(i)));
+                }
+                message.addArgument(""); // for some reason the
+                // JAVA OSC does not like when you add odd number
+                //          arguments so I added this to make it even all the time
+                packets.add(message);
+            }
+
+
+        } catch (Exception e){
+            Log.d(TAG, e.toString());
+        }
+
+        Date newDate = new Date();
+        long time = newDate.getTime();
+        Integer delayTime = Integer.valueOf("2");
+        time = time + delayTime.longValue();
+        newDate.setTime(time);
+        OSCBundle = new OSCBundle(packets, newDate);
+
+        Future<String> future = executor.submit(task);
+
+        try{
+            String result = future.get();
+            Log.d(TAG, result.toString());
+        } catch (Exception e) {
+            Log.d(TAG, e.toString());
+        }
+
+    };
+
+        public void bundleSenderFloat(String IPAddress, int outGoingPort, String bundle){
+
+        JSONObject jsonObject;
+        this.ip = IPAddress;
+        this.port = outGoingPort;
+
+        try{
+            jsonObject = new JSONObject(bundle);
+            JSONArray keys = jsonObject.names();
+
+            assert keys != null;
+            for(int y = 0; y < keys.length(); y++){
+                String key = keys.getString(y);
+                OSCMessage message = new OSCMessage(key);
+                String value = jsonObject.getString(key);
+                // help from https://howtodoinjava.com/gson/gson-parse-json-array/
+                Type argArrayType = new TypeToken<ArrayList<String>>(){}.getType();
+                ArrayList<String> argArray = gson.fromJson(value, argArrayType);
+
+                for(int i=0; i <argArray.size(); i++){
+                    message.addArgument(Float.parseFloat(argArray.get(i)));
+                }
+                message.addArgument(""); // for some reason the
+                // JAVA OSC does not like when you add odd number
+                //          arguments so I added this to make it even all the time
+                packets.add(message);
+            }
+
+
+        } catch (Exception e){
+            Log.d(TAG, e.toString());
+        }
+
+        Date newDate = new Date();
+        long time = newDate.getTime();
+        Integer delayTime = Integer.valueOf("2");
+        time = time + delayTime.longValue();
+        newDate.setTime(time);
+        OSCBundle = new OSCBundle(packets, newDate);
+
+        Future<String> future = executor.submit(task);
+
+        try{
+            String result = future.get();
+            Log.d(TAG, result.toString());
+        } catch (Exception e) {
+            Log.d(TAG, e.toString());
+        }
+
+    };
+
+        public void bundleSenderBool(String IPAddress, int outGoingPort, String bundle){
+
+        JSONObject jsonObject;
+        this.ip = IPAddress;
+        this.port = outGoingPort;
+
+        try{
+            jsonObject = new JSONObject(bundle);
+            JSONArray keys = jsonObject.names();
+
+            assert keys != null;
+            for(int y = 0; y < keys.length(); y++){
+                String key = keys.getString(y);
+                OSCMessage message = new OSCMessage(key);
+                String value = jsonObject.getString(key);
+                // help from https://howtodoinjava.com/gson/gson-parse-json-array/
+                Type argArrayType = new TypeToken<ArrayList<String>>(){}.getType();
+                ArrayList<String> argArray = gson.fromJson(value, argArrayType);
+
+                for(int i=0; i <argArray.size(); i++){
+                    message.addArgument(Boolean.parseBoolean(argArray.get(i)));
+                }
+                message.addArgument(""); // for some reason the
+                // JAVA OSC does not like when you add odd number
+                //          arguments so I added this to make it even all the time
+                packets.add(message);
+            }
+
+
+        } catch (Exception e){
+            Log.d(TAG, e.toString());
+        }
+
+        Date newDate = new Date();
+        long time = newDate.getTime();
+        Integer delayTime = Integer.valueOf("2");
+        time = time + delayTime.longValue();
+        newDate.setTime(time);
+        OSCBundle = new OSCBundle(packets, newDate);
+
+        Future<String> future = executor.submit(task);
+
+        try{
+            String result = future.get();
+            Log.d(TAG, result.toString());
+        } catch (Exception e) {
+            Log.d(TAG, e.toString());
+        }
+
+    };
 
     Callable<String> task = new Callable<String>() {
         @Override
