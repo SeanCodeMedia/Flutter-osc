@@ -1,9 +1,8 @@
 
 # flutterosc
-
 Flutter OSC allows flutter developers to send Open Sound Control (OSC) messages from android.
 This plugin is dependent on Java OSC com.illposed.osc to send OSC messages. Hence, this package does not work on IOS. I am planning on added IOS support shortly.
-for more details on Java osc you can go to this link https://www.illposed.com/software/javaoscdoc/ 
+for more details on Java OSC, you can go to this link https://www.illposed.com/software/javaoscdoc/ 
 
 # Example OSC Sender 
 
@@ -23,7 +22,8 @@ for more details on Java osc you can go to this link https://www.illposed.com/so
 
 # Example OSC Bundle 
 
-flutter osc bundles are sent immediately. scheduler is currently not supported but will be added. Read more about bundles at 
+
+Flutter OSC bundles are sent immediately. A scheduler is currently not supported but will be added. Read more about bundles at 
 https://www.illposed.com/software/javaoscdoc/ 
 
  ```dart 
@@ -56,9 +56,9 @@ https://www.illposed.com/software/javaoscdoc/
 ```
 
 # Example OSC Listener 
- FlutterOSCListener(<port number>, <"address pattern you want to listen for">);
-
- FlutterOSCListener(<port number>, <"address pattern you want to listen for">);
+ 
+ FlutterOSCListener(listeningPort, "address pattern")
+  when the address pattern parameter is set to "" the listener will listen for all incoming OSC addresses on the port you are listening on. However, if the address pattern parameter is to an address, the  OSC listener will only listen for that particular address. 
 
   ```dart 
 
