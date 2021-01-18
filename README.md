@@ -23,7 +23,7 @@ for more details on Java osc you can go to this link https://www.illposed.com/so
 
 # Example OSC Bundle 
 
-flutter osc bundles are sent immediately. scheduler is currently not supported but will be added. read more about bundles at 
+flutter osc bundles are sent immediately. scheduler is currently not supported but will be added. Read more about bundles at 
 https://www.illposed.com/software/javaoscdoc/ 
 
  ```dart 
@@ -55,9 +55,8 @@ https://www.illposed.com/software/javaoscdoc/
 
 ```
 
- FlutterOSCListener(<port number>, <"address pattern you want to listen for">);
-
 # Example OSC Listener 
+ FlutterOSCListener(<port number>, <"address pattern you want to listen for">);
 
   ```dart 
 
