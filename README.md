@@ -56,6 +56,7 @@ https://www.illposed.com/software/javaoscdoc/
 ```
 
 # Example OSC Listener 
+ FlutterOSCListener(<port number>, <"address pattern you want to listen for">);
 
  FlutterOSCListener(<port number>, <"address pattern you want to listen for">);
 
